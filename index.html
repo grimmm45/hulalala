@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Una flor para ti 🌻</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 50% 35%,
+        #fff59d 0%,
+        #ffd54f 25%,
+        #ffb300 55%,
+        #f57c00 100%);
+    color:white;
+}
+
+/* LUZ DE FONDO */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:-50%;
+    background:
+        radial-gradient(circle,
+        rgba(255,255,255,.25) 0%,
+        transparent 45%);
+    animation:brilloFondo 8s ease-in-out infinite alternate;
+    pointer-events:none;
+}
+
+@keyframes brilloFondo{
+    from{
+        transform:scale(.8);
+        opacity:.5;
+    }
+    to{
+        transform:scale(1.2);
+        opacity:1;
+    }
+}
+
+/* ESTRELLAS */
+
+.estrella{
+    position:fixed;
+    color:#fffde7;
+    font-size:12px;
+    opacity:.8;
+    animation:parpadear 2s infinite alternate;
+}
+
+.e1{top:10%;left:10%;}
+.e2{top:20%;right:15%;animation-delay:.5s;}
+.e3{top:40%;left:5%;animation-delay:1s;}
+.e4{top:55%;right:8%;animation-delay:1.5s;}
+.e5{top:75%;left:15%;animation-delay:.8s;}
+.e6{top:15%;left:48%;animation-delay:1.2s;}
+.e7{top:65%;right:25%;animation-delay:.3s;}
+
+@keyframes parpadear{
+    from{
+        opacity:.2;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.4);
+    }
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    position:relative;
+    z-index:2;
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:35px 15px 60px;
+}
+
+/* TITULO */
+
+.titulo{
+    text-align:center;
+    margin-bottom:10px;
+    animation:aparecer 1.5s ease;
+}
+
+.titulo h1{
+    font-size:clamp(35px,8vw,65px);
+    color:#fffde7;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 20px #ffe082,
+        0 0 40px #ffb300;
+    margin-bottom:8px;
+}
+
+.titulo p{
+    font-size:clamp(15px,4vw,21px);
+    color:#fffde7;
+    text-shadow:0 2px 5px rgba(0,0,0,.25);
+}
+
+/* RAMO Y GATITO */
+
+.escena{
+    position:relative;
+    width:330px;
+    height:350px;
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+}
+
+/* SOMBRA */
+
+.sombra{
+    position:absolute;
+    bottom:5px;
+    width:180px;
+    height:25px;
+    background:rgba(120,70,0,.25);
+    border-radius:50%;
+    filter:blur(5px);
+}
+
+/* GATITO */
+
+.gatito{
+    position:relative;
+    width:170px;
+    height:205px;
+    animation:gatoFlota 3s ease-in-out infinite;
+    z-index:5;
+}
+
+/* CABEZA */
+
+.cabeza{
+    position:absolute;
+    top:10px;
+    left:25px;
+    width:120px;
+    height:105px;
+    background:#fff4dc;
+    border-radius:48% 48% 45% 45%;
+    border:4px solid #8d5b32;
+    z-index:4;
+}
+
+/* OREJAS */
+
+.oreja{
+    position:absolute;
+    top:-25px;
+    width:55px;
+    height:55px;
+    background:#fff4dc;
+    border:4px solid #8d5b32;
+    transform:rotate(45deg);
+    border-radius:10px 45px 10px 10px;
+    z-index:-1;
+}
+
+.oreja.izq{
+    left:5px;
+}
+
+.oreja.der{
+    right:5px;
+    transform:rotate(45deg);
+}
+
+/* OREJAS INTERNAS */
+
+.oreja::after{
+    content:"";
+    position:absolute;
+    width:27px;
+    height:27px;
+    background:#ffb6a3;
+    top:9px;
+    left:9px;
+    border-radius:8px 25px 8px 8px;
+}
+
+/* OJOS */
+
+.ojo{
+    position:absolute;
+    top:43px;
+    width:13px;
+    height:18px;
+    background:#49311f;
+    border-radius:50%;
+}
+
+.ojo::after{
+    content:"";
+    position:absolute;
+    width:4px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    top:3px;
+    left:3px;
+}
+
+.ojo.izq{
+    left:32px;
+}
+
+.ojo.der{
+    right:32px;
+}
+
+/* NARIZ */
+
+.nariz{
+    position:absolute;
+    top:65px;
+    left:54px;
+    width:13px;
+    height:9px;
+    background:#e88b8b;
+    border-radius:50%;
+}
+
+/* BOCA */
+
+.boca{
+    position:absolute;
+    top:73px;
+    left:48px;
+    width:27px;
+    height:13px;
+    border-bottom:3px solid #8d5b32;
+    border-radius:50%;
+}
+
+/* BIGOTES */
+
+.bigote{
+    position:absolute;
+    width:45px;
+    height:1px;
+    background:#8d5b32;
+    top:72px;
+}
+
+.bigote.a{
+    left:-34px;
+    transform:rotate(8deg);
+}
+
+.bigote.b{
+    left:-35px;
+    top:80px;
+    transform:rotate(-5deg);
+}
+
+.bigote.c{
+    right:-34px;
+    transform:rotate(-8deg);
+}
+
+.bigote.d{
+    right:-35px;
+    top:80px;
+    transform:rotate(5deg);
+}
+
+/* CUERPO */
+
+.cuerpo{
+    position:absolute;
+    top:100px;
+    left:35px;
+    width:100px;
+    height:105px;
+    background:#fff4dc;
+    border:4px solid #8d5b32;
+    border-radius:48% 48% 35% 35%;
+}
+
+/* PECHO */
+
+.pecho{
+    position:absolute;
+    top:15px;
+    left:20px;
+    width:52px;
+    height:70px;
+    background:#fffaf0;
+    border-radius:50%;
+}
+
+/* PATAS */
+
+.pata{
+    position:absolute;
+    bottom:0;
+    width:45px;
+    height:70px;
+    background:#fff4dc;
+    border:4px solid #8d5b32;
+    border-radius:30px;
+}
+
+.pata.izq{
+    left:20px;
+}
+
+.pata.der{
+    right:20px;
+}
+
+/* BRAZOS SOSTENIENDO EL RAMO */
+
+.brazo{
+    position:absolute;
+    top:125px;
+    width:65px;
+    height:25px;
+    background:#fff4dc;
+    border:4px solid #8d5b32;
+    border-radius:30px;
+    z-index:7;
+}
+
+.brazo.izq{
+    left:5px;
+    transform:rotate(25deg);
+}
+
+.brazo.der{
+    right:5px;
+    transform:rotate(-25deg);
+}
+
+/* COLA */
+
+.cola{
+    position:absolute;
+    right:-18px;
+    bottom:20px;
+    width:65px;
+    height:90px;
+    border:12px solid #fff4dc;
+    border-left:0;
+    border-bottom:0;
+    border-radius:0 70px 0 0;
+    transform:rotate(15deg);
+    z-index:-1;
+}
+
+/* RAMO */
+
+.ramo{
+    position:absolute;
+    top:115px;
+    left:125px;
+    width:85px;
+    height:130px;
+    z-index:8;
+    transform:rotate(8deg);
+    animation:ramoMovimiento 2s ease-in-out infinite alternate;
+}
+
+/* TALLOS */
+
+.tallo{
+    position:absolute;
+    bottom:0;
+    left:40px;
+    width:6px;
+    height:95px;
+    background:#4f8c35;
+    border-radius:10px;
+    transform:rotate(-5deg);
+}
+
+.tallo.t2{
+    left:25px;
+    height:85px;
+    transform:rotate(-18deg);
+}
+
+.tallo.t3{
+    left:55px;
+    height:90px;
+    transform:rotate(12deg);
+}
+
+/* HOJAS */
+
+.hoja{
+    position:absolute;
+    width:32px;
+    height:15px;
+    background:#62a83f;
+    border-radius:100% 0 100% 0;
+}
+
+.hoja.h1{
+    left:18px;
+    bottom:35px;
+    transform:rotate(20deg);
+}
+
+.hoja.h2{
+    left:48px;
+    bottom:48px;
+    transform:rotate(-25deg);
+}
+
+/* FLORES */
+
+.flor{
+    position:absolute;
+    width:45px;
+    height:45px;
+}
+
+.flor.f1{
+    left:18px;
+    top:5px;
+}
+
+.flor.f2{
+    left:45px;
+    top:20px;
+}
+
+.flor.f3{
+    left:0;
+    top:25px;
+}
+
+/* PÉTALOS */
+
+.petalo{
+    position:absolute;
+    width:19px;
+    height:28px;
+    background:#ffd92f;
+    border-radius:50%;
+    left:13px;
+    top:8px;
+}
+
+.petalo:nth-child(1){
+    transform:translateY(-12px);
+}
+
+.petalo:nth-child(2){
+    transform:rotate(60deg) translateY(-12px);
+}
+
+.petalo:nth-child(3){
+    transform:rotate(120deg) translateY(-12px);
+}
+
+.petalo:nth-child(4){
+    transform:rotate(180deg) translateY(-12px);
+}
+
+.petalo:nth-child(5){
+    transform:rotate(240deg) translateY(-12px);
+}
+
+.petalo:nth-child(6){
+    transform:rotate(300deg) translateY(-12px);
+}
+
+.centro{
+    position:absolute;
+    width:17px;
+    height:17px;
+    background:#6d431b;
+    border-radius:50%;
+    left:14px;
+    top:14px;
+    z-index:2;
+}
+
+/* ANIMACIONES */
+
+@keyframes gatoFlota{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+@keyframes ramoMovimiento{
+    from{
+        transform:rotate(6deg);
+    }
+
+    to{
+        transform:rotate(12deg);
+    }
+}
+
+/* MENSAJE */
+
+.mensaje{
+    position:relative;
+    width:min(700px,92%);
+    padding:28px 25px;
+    margin-top:10px;
+    background:rgba(255,193,7,.28);
+    border:2px solid rgba(255,255,255,.45);
+    border-radius:25px;
+    backdrop-filter:blur(8px);
+    box-shadow:
+        0 10px 35px rgba(120,70,0,.25),
+        inset 0 0 25px rgba(255,255,255,.12);
+    text-align:center;
+    animation:aparecer 2s ease;
+}
+
+.mensaje p{
+    font-size:clamp(17px,4vw,23px);
+    line-height:1.7;
+    color:#fffef0;
+    text-shadow:0 2px 5px rgba(100,50,0,.4);
+}
+
+.feliz-dia{
+    display:block;
+    margin-top:18px;
+    font-size:clamp(25px,6vw,40px);
+    font-weight:bold;
+    color:#fffde7;
+    text-shadow:
+        0 0 8px #fff,
+        0 0 18px #fff176,
+        0 0 30px #ffd54f,
+        0 0 45px #ffb300;
+    animation:felizBrillo 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes felizBrillo{
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.06);
+    }
+}
+
+/* BOTÓN */
+
+.boton{
+    margin-top:25px;
+    padding:15px 28px;
+    border:none;
+    border-radius:50px;
+    background:#fffde7;
+    color:#e69500;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:
+        0 5px 20px rgba(120,70,0,.3);
+    transition:.3s;
+}
+
+.boton:hover{
+    transform:scale(1.08);
+    box-shadow:
+        0 8px 30px rgba(120,70,0,.4);
+}
+
+/* FLORES DE ABAJO */
+
+.flores-abajo{
+    display:flex;
+    gap:14px;
+    margin-top:35px;
+    font-size:28px;
+    animation:aparecer 2.5s ease;
+}
+
+/* PÉTALOS FLOTANDO */
+
+.petalo-caida{
+    position:fixed;
+    top:-30px;
+    color:#fff176;
+    font-size:20px;
+    z-index:1;
+    animation:caer linear infinite;
+    opacity:.8;
+}
+
+.pc1{
+    left:10%;
+    animation-duration:7s;
+}
+
+.pc2{
+    left:25%;
+    animation-duration:9s;
+    animation-delay:2s;
+}
+
+.pc3{
+    left:45%;
+    animation-duration:8s;
+    animation-delay:1s;
+}
+
+.pc4{
+    left:65%;
+    animation-duration:10s;
+    animation-delay:3s;
+}
+
+.pc5{
+    left:85%;
+    animation-duration:7s;
+    animation-delay:4s;
+}
+
+@keyframes caer{
+    0%{
+        transform:translateY(-30px) rotate(0deg);
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* APARICIÓN */
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* CELULAR */
+
+@media(max-width:500px){
+
+    .contenedor{
+        padding-top:25px;
+    }
+
+    .escena{
+        transform:scale(.88);
+        margin-top:-5px;
+        margin-bottom:-15px;
+    }
+
+    .mensaje{
+        padding:22px 17px;
+    }
+
+    .mensaje p{
+        line-height:1.6;
+    }
+
+    .flores-abajo{
+        margin-top:25px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ESTRELLAS -->
+
+<div class="estrella e1">✦</div>
+<div class="estrella e2">✦</div>
+<div class="estrella e3">✧</div>
+<div class="estrella e4">✦</div>
+<div class="estrella e5">✧</div>
+<div class="estrella e6">✦</div>
+<div class="estrella e7">✧</div>
+
+<!-- PÉTALOS -->
+
+<div class="petalo-caida pc1">🌼</div>
+<div class="petalo-caida pc2">🌻</div>
+<div class="petalo-caida pc3">🌼</div>
+<div class="petalo-caida pc4">🌻</div>
+<div class="petalo-caida pc5">🌼</div>
+
+
+<div class="contenedor">
+
+    <!-- TITULO -->
+
+    <div class="titulo">
+
+        <h1>Para ti 🌻</h1>
+
+        <p>
+            Porque hoy quería regalarte algo bonito...
+        </p>
+
+    </div>
+
+
+    <!-- GATITO CON RAMO -->
+
+    <div class="escena">
+
+        <div class="sombra"></div>
+
+        <div class="gatito">
+
+            <!-- COLA -->
+
+            <div class="cola"></div>
+
+            <!-- CUERPO -->
+
+            <div class="cuerpo">
+
+                <div class="pecho"></div>
+
+            </div>
+
+            <!-- PATAS -->
+
+            <div class="pata izq"></div>
+            <div class="pata der"></div>
+
+            <!-- BRAZOS -->
+
+            <div class="brazo izq"></div>
+            <div class="brazo der"></div>
+
+            <!-- CABEZA -->
+
+            <div class="cabeza">
+
+                <div class="oreja izq"></div>
+                <div class="oreja der"></div>
+
+                <div class="ojo izq"></div>
+                <div class="ojo der"></div>
+
+                <div class="nariz"></div>
+                <div class="boca"></div>
+
+                <div class="bigote a"></div>
+                <div class="bigote b"></div>
+                <div class="bigote c"></div>
+                <div class="bigote d"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RAMO -->
+
+        <div class="ramo">
+
+            <div class="tallo"></div>
+            <div class="tallo t2"></div>
+            <div class="tallo t3"></div>
+
+            <div class="hoja h1"></div>
+            <div class="hoja h2"></div>
+
+            <div class="flor f1">
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="centro"></div>
+            </div>
+
+            <div class="flor f2">
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="centro"></div>
+            </div>
+
+            <div class="flor f3">
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="petalo"></div>
+                <div class="centro"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MENSAJE -->
+
+    <div class="mensaje">
+
+        <p>
+            Por si aún no te dieron una flor virtual 🌻
+            <br><br>
+
+            Ya que no te conozco, pero el detalle es lo que cuenta. 💛
+            <br><br>
+
+            Si perdemos la racha, te tuqueo 😂
+
+            <span class="feliz-dia">
+                ¡Feliz día, señorita! 🌻✨
+            </span>
+        </p>
+
+    </div>
+
+
+    <!-- BOTÓN -->
+
+    <button class="boton" onclick="mostrarMensaje()">
+        Una última cosita ✨
+    </button>
+
+
+    <!-- FLORES INFERIORES -->
+
+    <div class="flores-abajo">
+        🌻 🌼 🌻 🌼 🌻 🌼 🌻
+    </div>
+
+</div>
+
+
+<script>
+
+function mostrarMensaje(){
+
+    alert(
+        "Aunque no te conozco, espero que este pequeño gatito con flores te saque una sonrisa. 🐱🌻💛"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
