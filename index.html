@@ -27,8 +27,6 @@ body{
     color:white;
 }
 
-/* LUZ DE FONDO */
-
 body::before{
     content:"";
     position:fixed;
@@ -98,7 +96,7 @@ body::before{
 
 .titulo{
     text-align:center;
-    margin-bottom:10px;
+    margin-bottom:5px;
     animation:aparecer 1.5s ease;
 }
 
@@ -118,13 +116,13 @@ body::before{
     text-shadow:0 2px 5px rgba(0,0,0,.25);
 }
 
-/* RAMO Y GATITO */
+/* ESCENA */
 
 .escena{
     position:relative;
-    width:330px;
-    height:350px;
-    margin-top:10px;
+    width:360px;
+    height:360px;
+    margin-top:0;
     display:flex;
     justify-content:center;
     align-items:flex-end;
@@ -135,7 +133,7 @@ body::before{
 .sombra{
     position:absolute;
     bottom:5px;
-    width:180px;
+    width:190px;
     height:25px;
     background:rgba(120,70,0,.25);
     border-radius:50%;
@@ -145,7 +143,10 @@ body::before{
 /* GATITO */
 
 .gatito{
-    position:relative;
+    position:absolute;
+    bottom:18px;
+    left:50%;
+    transform:translateX(-50%);
     width:170px;
     height:205px;
     animation:gatoFlota 3s ease-in-out infinite;
@@ -186,10 +187,7 @@ body::before{
 
 .oreja.der{
     right:5px;
-    transform:rotate(45deg);
 }
-
-/* OREJAS INTERNAS */
 
 .oreja::after{
     content:"";
@@ -333,7 +331,7 @@ body::before{
     right:20px;
 }
 
-/* BRAZOS SOSTENIENDO EL RAMO */
+/* BRAZOS */
 
 .brazo{
     position:absolute;
@@ -372,16 +370,25 @@ body::before{
     z-index:-1;
 }
 
-/* RAMO */
+/* =========================
+   RAMO DE FLORES
+   ========================= */
 
 .ramo{
     position:absolute;
-    top:115px;
-    left:125px;
-    width:85px;
-    height:130px;
-    z-index:8;
-    transform:rotate(8deg);
+
+    /* MÁS ARRIBA Y CENTRADO */
+    top:62px;
+    left:50%;
+    margin-left:22px;
+
+    width:105px;
+    height:150px;
+
+    z-index:10;
+
+    transform:rotate(5deg);
+
     animation:ramoMovimiento 2s ease-in-out infinite alternate;
 }
 
@@ -390,23 +397,23 @@ body::before{
 .tallo{
     position:absolute;
     bottom:0;
-    left:40px;
+    left:50%;
     width:6px;
-    height:95px;
+    height:105px;
     background:#4f8c35;
     border-radius:10px;
     transform:rotate(-5deg);
 }
 
 .tallo.t2{
-    left:25px;
-    height:85px;
+    left:35%;
+    height:95px;
     transform:rotate(-18deg);
 }
 
 .tallo.t3{
-    left:55px;
-    height:90px;
+    left:65%;
+    height:100px;
     transform:rotate(12deg);
 }
 
@@ -414,21 +421,21 @@ body::before{
 
 .hoja{
     position:absolute;
-    width:32px;
-    height:15px;
+    width:35px;
+    height:17px;
     background:#62a83f;
     border-radius:100% 0 100% 0;
 }
 
 .hoja.h1{
-    left:18px;
-    bottom:35px;
+    left:20px;
+    bottom:40px;
     transform:rotate(20deg);
 }
 
 .hoja.h2{
-    left:48px;
-    bottom:48px;
+    left:55px;
+    bottom:55px;
     transform:rotate(-25deg);
 }
 
@@ -436,91 +443,89 @@ body::before{
 
 .flor{
     position:absolute;
-    width:45px;
-    height:45px;
+    width:50px;
+    height:50px;
 }
 
 .flor.f1{
-    left:18px;
-    top:5px;
+    left:28px;
+    top:0;
 }
 
 .flor.f2{
-    left:45px;
-    top:20px;
+    left:52px;
+    top:25px;
 }
 
 .flor.f3{
-    left:0;
-    top:25px;
+    left:5px;
+    top:28px;
 }
 
 /* PÉTALOS */
 
 .petalo{
     position:absolute;
-    width:19px;
-    height:28px;
+    width:21px;
+    height:30px;
     background:#ffd92f;
     border-radius:50%;
-    left:13px;
-    top:8px;
+    left:14px;
+    top:9px;
 }
 
 .petalo:nth-child(1){
-    transform:translateY(-12px);
+    transform:translateY(-13px);
 }
 
 .petalo:nth-child(2){
-    transform:rotate(60deg) translateY(-12px);
+    transform:rotate(60deg) translateY(-13px);
 }
 
 .petalo:nth-child(3){
-    transform:rotate(120deg) translateY(-12px);
+    transform:rotate(120deg) translateY(-13px);
 }
 
 .petalo:nth-child(4){
-    transform:rotate(180deg) translateY(-12px);
+    transform:rotate(180deg) translateY(-13px);
 }
 
 .petalo:nth-child(5){
-    transform:rotate(240deg) translateY(-12px);
+    transform:rotate(240deg) translateY(-13px);
 }
 
 .petalo:nth-child(6){
-    transform:rotate(300deg) translateY(-12px);
+    transform:rotate(300deg) translateY(-13px);
 }
 
 .centro{
     position:absolute;
-    width:17px;
-    height:17px;
+    width:19px;
+    height:19px;
     background:#6d431b;
     border-radius:50%;
-    left:14px;
-    top:14px;
+    left:15px;
+    top:15px;
     z-index:2;
 }
 
-/* ANIMACIONES */
-
 @keyframes gatoFlota{
     0%,100%{
-        transform:translateY(0);
+        transform:translateX(-50%) translateY(0);
     }
 
     50%{
-        transform:translateY(-8px);
+        transform:translateX(-50%) translateY(-8px);
     }
 }
 
 @keyframes ramoMovimiento{
     from{
-        transform:rotate(6deg);
+        transform:rotate(3deg);
     }
 
     to{
-        transform:rotate(12deg);
+        transform:rotate(9deg);
     }
 }
 
@@ -530,7 +535,7 @@ body::before{
     position:relative;
     width:min(700px,92%);
     padding:28px 25px;
-    margin-top:10px;
+    margin-top:0;
     background:rgba(255,193,7,.28);
     border:2px solid rgba(255,255,255,.45);
     border-radius:25px;
@@ -585,15 +590,13 @@ body::before{
     font-size:17px;
     font-weight:bold;
     cursor:pointer;
-    box-shadow:
-        0 5px 20px rgba(120,70,0,.3);
+    box-shadow:0 5px 20px rgba(120,70,0,.3);
     transition:.3s;
 }
 
 .boton:hover{
     transform:scale(1.08);
-    box-shadow:
-        0 8px 30px rgba(120,70,0,.4);
+    box-shadow:0 8px 30px rgba(120,70,0,.4);
 }
 
 /* FLORES DE ABAJO */
@@ -606,7 +609,7 @@ body::before{
     animation:aparecer 2.5s ease;
 }
 
-/* PÉTALOS FLOTANDO */
+/* PÉTALOS QUE CAEN */
 
 .petalo-caida{
     position:fixed;
@@ -680,9 +683,14 @@ body::before{
     }
 
     .escena{
-        transform:scale(.88);
+        transform:scale(.9);
         margin-top:-5px;
         margin-bottom:-15px;
+    }
+
+    .ramo{
+        top:55px;
+        margin-left:20px;
     }
 
     .mensaje{
@@ -737,7 +745,7 @@ body::before{
     </div>
 
 
-    <!-- GATITO CON RAMO -->
+    <!-- GATITO -->
 
     <div class="escena">
 
@@ -745,29 +753,17 @@ body::before{
 
         <div class="gatito">
 
-            <!-- COLA -->
-
             <div class="cola"></div>
 
-            <!-- CUERPO -->
-
             <div class="cuerpo">
-
                 <div class="pecho"></div>
-
             </div>
-
-            <!-- PATAS -->
 
             <div class="pata izq"></div>
             <div class="pata der"></div>
 
-            <!-- BRAZOS -->
-
             <div class="brazo izq"></div>
             <div class="brazo der"></div>
-
-            <!-- CABEZA -->
 
             <div class="cabeza">
 
@@ -790,7 +786,7 @@ body::before{
         </div>
 
 
-        <!-- RAMO -->
+        <!-- RAMO QUE EL GATITO SOSTIENE -->
 
         <div class="ramo">
 
@@ -802,33 +798,42 @@ body::before{
             <div class="hoja h2"></div>
 
             <div class="flor f1">
+
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
+
                 <div class="centro"></div>
+
             </div>
 
             <div class="flor f2">
+
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
+
                 <div class="centro"></div>
+
             </div>
 
             <div class="flor f3">
+
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
                 <div class="petalo"></div>
+
                 <div class="centro"></div>
+
             </div>
 
         </div>
@@ -841,10 +846,13 @@ body::before{
     <div class="mensaje">
 
         <p>
+
             Por si aún no te dieron una flor virtual 🌻
+
             <br><br>
 
             Ya que no te conozco, pero el detalle es lo que cuenta. 💛
+
             <br><br>
 
             Si perdemos la racha, te tuqueo 😂
@@ -852,6 +860,7 @@ body::before{
             <span class="feliz-dia">
                 ¡Feliz día, señorita! 🌻✨
             </span>
+
         </p>
 
     </div>
